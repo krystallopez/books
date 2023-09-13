@@ -1,13 +1,13 @@
 import React from "react";
 
 
-function BookShow() {
-  return <>
-    <div>
-      <p>This is where we show the book </p>
-    </div>
-  </>
+function BookShow({ book }) {
+  return (
+    <>
+      <div className="book-show">{book.title}</div>
+      {/* this will show each book by title */}
+    </>
+  );
 }
-
 
 export default BookShow;

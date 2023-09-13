@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
-function BookCreate({ onCreate }) {
-  const [title, setTitle] = useState("");
+function BookCreate({ onCreate }) { // onCreate is the prop used to house the createBook function that passes the title as the argument to create a new book title 
+  const [title, setTitle] = useState(""); // the state to track changes made to the title 
 
-  //updates title state to be hold the value of the user input
+  // updates title state to hold the value of the user input
   const handleChange = (event) => {
     setTitle(event.target.value);
   };
 
-  //submit event handler
+  // submit event handler
   const handleSubmit = (event) => {
-    event.preventDefault(); //prevents data from reloading
+    event.preventDefault(); // prevents data from reloading
     onCreate(title);
-    setTitle(""); // update our state, set to empty string this will rerender book create component and force the input element to show a value of an empty string,
+    setTitle(""); // updates our state, set to empty string this will re-render book create component and force the input element to show a value of an empty string,
   };
 
   return (
