@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-function BookEdit() {
+function BookEdit({ book }) {
+  const [title, setTitle] = useState(book.title); // state for tracking changes made to the title
+
+  const handleChange = (event) => {
+    setTitle(event.target.value);
+  };
+  // sets the title to the updated event value
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("new title", title);
+  };
   return (
     <>
-      <form className="book-edit">
+      <form onSubmit={handleSubmit} className="book-edit">
         <label>Title</label>
-        <input className="input"/>
+        <input className="input" value={title} onChange={handleChange} />
+        {/* handles value and change to form */}
         <button className="button is-primary">Save</button>
       </form>
     </>
