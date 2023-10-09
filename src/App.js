@@ -1,9 +1,20 @@
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
+import BookShow from "./components/BookShow";
 
 function App() {
   const [books, setBooks] = useState([]); // set to an empty array, as books are going to be listed as an array of objects
+
+  const editBookById = (id, newTitle) => {
+    const updatedBooks = books.map((book) => {
+      if (book.id === id) {
+        return { ...book, title: newTitle };
+      }
+      return book;
+    });
+    setBooks(updatedBooks);
+  };
 
   // deletes book by id
   const deleteBookById = (id) => {
@@ -23,14 +34,13 @@ function App() {
       },
     ];
     setBooks(updatedBooks);
-    console.log(books);
   };
 
   return (
     <div className="App">
       {books.length}
       <BookCreate onCreate={createBook} />
-      <BookList books={books} onDelete={deleteBookById}/>
+      <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       {/* passes books as props  */}
     </div>
   );
