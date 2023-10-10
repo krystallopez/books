@@ -10603,7 +10603,7 @@ a.has-text-danger-dark:hover {
 .app h1 {
   font-size: 48px;
   font-weight: 800;
-  margin: auto;
+  margin-right: auto;
   max-width: 1024px;
   padding: 20px;
 }

@@ -37,8 +37,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {books.length}
+    <div className="app">
+      <h1>Reading List</h1>
       <BookCreate onCreate={createBook} />
       <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       {/* passes books as props  */}
