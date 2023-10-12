@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import BookShow from "./components/BookShow";
+
 
 function App() {
   const [books, setBooks] = useState([]); // set to an empty array, as books are going to be listed as an array of objects
