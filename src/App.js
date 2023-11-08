@@ -1,10 +1,20 @@
-import { useState } from "react";
+/* eslint-disable no-sequences */
+import { useState, useEffect } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-
+import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([]); // set to an empty array, as books are going to be listed as an array of objects
+
+  const fetchBooks = async () => {
+    const response = await axios.get("http://localhost:3001/books");
+    setBooks(response.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   const editBookById = (id, newTitle) => {
     const updatedBooks = books.map((book) => {
@@ -25,14 +35,12 @@ function App() {
   };
 
   //event handler creating a book, sets an id that is a random number
-  const createBook = (title) => {
-    const updatedBooks = [
-      ...books,
-      {
-        id: Math.round(Math.random() * 9999),
-        title: title,
-      },
-    ];
+  const createBook = async (title) => {
+    const response = await axios.post("http://localhost:3001/books", {
+      title,
+    });
+
+    const updatedBooks = [...books, response.data];
     setBooks(updatedBooks);
   };
 
