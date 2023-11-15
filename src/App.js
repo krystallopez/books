@@ -17,7 +17,7 @@ function App() {
     fetchBooks();
   }, []);
 
-  // edits book by id
+  // edits book by id, this is passed along as prop in the BookShow component 
   const editBookById = async (id, newTitle) => {
     const response = await axios.put(`http://localhost:3001/books/${id}`, {
       title: newTitle,
@@ -32,7 +32,7 @@ function App() {
     setBooks(updatedBooks);
   };
 
-  // deletes book by id
+  // deletes book by id, this is passed along as prop in the BookShow component 
   const deleteBookById = async (id) => {
     await axios.delete(`http://localhost:3001/books/${id}`);
     const updatedBooks = books.filter((book) => {
