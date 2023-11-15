@@ -7,6 +7,7 @@ import axios from "axios";
 function App() {
   const [books, setBooks] = useState([]); // set to an empty array, as books are going to be listed as an array of objects
 
+  // fetchs all of the book when the page renders
   const fetchBooks = async () => {
     const response = await axios.get("http://localhost:3001/books");
     setBooks(response.data);
@@ -16,6 +17,7 @@ function App() {
     fetchBooks();
   }, []);
 
+  // edits book by id 
   const editBookById = (id, newTitle) => {
     const updatedBooks = books.map((book) => {
       if (book.id === id) {
